@@ -4,8 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/teste', function () {
-    return Inertia::render('Bem vindo ao meu laravel basico apenas com o banco de dados!');
+    return Inertia::render('welcome');
 })->name('home');
+
+Route::get('/api/teste', function () {
+    return response()->json([
+        'mensagem' => 'Rota teste',
+    ]);
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
